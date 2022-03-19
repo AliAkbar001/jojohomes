@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+.products1{
+    margin: 20px auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+.card1{
+width: 300px;
+height: 400px;
+border: 1px solid black;
+border-radius: 20px;
+overflow: hidden;
+padding: 10px;
+margin: 40px 20px;
+background-color: ghostwhite;
+box-shadow: 1px 2px 10px 10px  rgb(162, 167, 160);
+}
+.products1-image{
+    width: 100%;
+    max-width: 300px;
+    min-height: 200px;
+    display: block;
+    object-fit: cover;
+}
+.products1-name{
+    text-transform: uppercase;
+    margin :10px 0px;
+
+}
+.products1-price{
+    margin: 10px 0px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    line-height: 30px;
+}
+.products1-add-button{
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 15% 15% 15% 15% / 50% 50% 50% 50%;
+    background:linear-gradient(120deg,#9db19d 20%,#47a571);
+    border: none;
+    width:140px;
+    height: 40px;
+    color: rgb(231, 218, 33);
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin:10px auto
+}
+.products1-add-button:hover{
+background-color: #0a720a;
+
+}
+.products1-add-button:active{
+    transform: translateY(2px);
+}
