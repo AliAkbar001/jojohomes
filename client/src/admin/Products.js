@@ -2,7 +2,17 @@ import React, { useState } from 'react'
 
 const Products = () => {
   const [display, setDisplay] = useState('none');
-  
+  const [product, setProduct] = useState({
+        title: "", desc: "", category:"" ,size: "", color: "", quantity: "",img: ""
+    });
+    let name, value;
+    const handleInput = (e) =>{
+        console.log(e);
+        name = e.target.name;
+        value = e.target.value;
+
+        setProduct({...product, [name]:value});
+    }
   
   return (
     <>
@@ -97,16 +107,30 @@ const Products = () => {
 
             <div className="modal-content">
               <div className="modal-header">
-                <button onClick={() => setDisplay('none')} className='hidebtn'><span className="close">&times;</span></button>
-                <h2>Add Product</h2>
+                {/* <button  className='hidebtn'><span clasvalsName="close">&times;</span></button> */}
+                <h2 style={{width: '100%', color: 'white',textAlign: 'center'}}>Add Product</h2>
               </div>
               <div className="modal-body">
                 <div>
-                  <input type="text" placeholder='Product Title' className='add-pro' />
+                  <input type="text" value={product.title} onChange={handleInput} placeholder='Product Title' className='add-pro' required />
+                  <select name="category" value={product.category} onChange={handleInput} id="" className='add-pro' required>
+                    <option value="">Select Option</option>
+                    <option value="bedsheet">Bed Sheet</option>
+                    <option value="sofa cover">Sofa Cover</option>
+                    <option value="cussion">Cussion</option>
+                    <option value="bedsheet">Bed Sheet</option>
+                  </select>
+                  <input type="text" value={product.color} onChange={handleInput} className='add-pro' name='color' placeholder='Color' required />
+                  <input type="text" value={product.size} onChange={handleInput} className='add-pro' name='size' placeholder='Size' required />
+                  <input type="number" value={product.price} onChange={handleInput} className='add-pro' name='price' placeholder='Price' required />
+                  <input type="number" value={product.quantity} onChange={handleInput} className='add-pro' name='quantity' placeholder='Quantity' required/>
+                  <input type="file" value={product.img} onChange={handleInput} className='add-pro' name='img' placeholder='Select Image' required />
+                  <textarea value={product.description} onChange={handleInput} name="description"  placeholder="Product's Description" cols="30" rows="4" className='add-pro' required></textarea>
                 </div>
               </div>
               <div className="modal-footer">
-                <h3>Modal Footer</h3>
+                <button className='add-pbtn'>Add Product</button>
+                <button className='btns3' onClick={() => setDisplay('none')} >Cancel</button>
               </div>
             </div>
 
