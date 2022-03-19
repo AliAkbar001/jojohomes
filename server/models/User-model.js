@@ -5,8 +5,12 @@ const UserSchema = mongoose.Schema(
         name: {type: String},
         email: {type: String, required: true, unique: true},
         password: {type: String, required: true},
-        phone: {type: String},
-        address: {type: String},
+        phone: {type: String, required: true},
+        address: { type: String },
+        status:{
+            type: String, 
+            default: "Active",
+        },
         isAdmin:{
             type: Boolean,
             default: false,

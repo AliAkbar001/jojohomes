@@ -52,9 +52,9 @@ const Sidebar = (props) => {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/admin/users">
             <i className='bx bx-user' ></i>
-            <span className="links_name">Team</span>
+            <span className="links_name">Users</span>
           </a>
         </li>
         <li>

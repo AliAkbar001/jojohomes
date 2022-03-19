@@ -20,6 +20,7 @@ import Matress_Protectors from './components/Matress_Protectors';
 import Admin from './admin/Admin';
 import AdminProducts from './admin/AdminProducts';
 import AdminLogin from './admin/AdminLogin';
+import AdminPageUsers from './admin/AdminPageUsers';
 // import { useContext } from 'react'
 // import { BrowserRouter } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
@@ -77,6 +78,7 @@ const App = () => {
           <Route exact path='/admin' component={Admin} />
           <Route exact path='/admin/login' component={AdminLogin} />
           <Route exact path='/admin/products' component={AdminProducts} />
+          <Route exact path='/admin/users' component={AdminPageUsers} />
           <Route exact path='/About' component={About} />
           <Route exact path='/Order_History' component={Order_History} />
           <Route exact path='/Product' component={Product} />
