@@ -10,8 +10,8 @@ const Product = require("../models/Product-model");
 //CREATE PRODUCT
 
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
-  const file = req.files.image;
-  file.mv(`public/uploads/${file.name}`, (err) => {
+  const file = req.files.img;
+  file.mv(`public/${file.name}`, (err) => {
     console.error(err);
   });
   const newProduct = new Product(req.body);

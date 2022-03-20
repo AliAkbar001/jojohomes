@@ -24,8 +24,9 @@ const Products = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("hello world");
     const formData = new FormData();
-    formData.append("image", product.img);
+    formData.append("img", product.img);
     formData.append("title", product.title);
     formData.append("desc", product.desc);
     formData.append("category", product.category);
@@ -172,6 +173,7 @@ const Products = () => {
             <div>
               <input
                 type='text'
+                name='title'
                 value={product.title}
                 onChange={handleInput}
                 placeholder='Product Title'
@@ -231,7 +233,7 @@ const Products = () => {
               <input
                 type='file'
                 accept='.png, .jpg, .jpeg'
-                value={product.img}
+                // value={product.img}
                 onChange={onChange}
                 className='add-pro'
                 name='img'
@@ -251,7 +253,9 @@ const Products = () => {
             </div>
           </div>
           <div className='modal-footer'>
-            <button className='add-pbtn'>Add Product</button>
+            <button className='add-pbtn' onClick={handleSubmit}>
+              Add Product
+            </button>
             <button className='btns3' onClick={() => setDisplay("none")}>
               Cancel
             </button>
