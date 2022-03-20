@@ -1,17 +1,20 @@
 import React,{ useEffect, useState } from 'react';
 import axios from 'axios';
 
-const baseURL = "http://localhost:5000/api/users";
+const baseURL = "http://localhost:5000/api/users/";
 const Users = () => {
+    const auth = localStorage.getItem('admintoken');
     const [customers, setCustomers] = useState('');
     useEffect(()=>{
-        axios.get(baseURL).then((response) => {
+        axios.get(baseURL, {headers: {token: "Bearer "+auth}}).then((response) => {
             console.log("***************************************");
             console.log("***************************************");
             console.log("***************************************");
             console.log("***************************************");
             console.log(response);
-            // setCustomers(response)
+            setCustomers(response.data)
+        }).catch((err) => {
+            console.log(err);
         })
     }, [])
 
@@ -33,18 +36,26 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Shahwaiz</td>
-                        <td>Shahwaiz@nagar.com</td>
-                        <td>0346782829</td>
-                        <td>District Loduran</td>
-                        <td>12-11-22021</td>
-                        <td>Active</td>
-                        <td><button className='btns1' >Edit</button></td>
-                        {/* <td><button className='btns2'>Delete</button></td> */}
-                    </tr>
+                    {
+                        customers && customers.map((customer, index) =>{
+                            const {name, email, phone, address, status, createdAt} = customer;
+                            return (
+                                <tr key={index}>
+                                    <td>{index}</td>
+                                    <td>{name}</td>
+                                    <td>{email}</td>
+                                    <td>{phone}</td>
+                                    <td>{address}</td>
+                                    <td>{createdAt}</td>
+                                    <td>{status}</td>
+                                    {/* <td><button className='btns1' >Edit</button></td> */}
+                                </tr>
+                            )
+                        })
+                    }
+                    
                     </tbody>
+                                    {/* <td><button className='btns2'>Delete</button></td> */}
                 </table>            
             </div>
         </div>

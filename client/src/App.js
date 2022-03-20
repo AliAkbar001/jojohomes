@@ -21,6 +21,7 @@ import Admin from './admin/Admin';
 import AdminProducts from './admin/AdminProducts';
 import AdminLogin from './admin/AdminLogin';
 import AdminPageUsers from './admin/AdminPageUsers';
+import Navbar from './components/Nav/Navbar';
 // import { useContext } from 'react'
 // import { BrowserRouter } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';

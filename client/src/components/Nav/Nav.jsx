@@ -10,6 +10,7 @@ import { BsHeart } from "react-icons/bs";
 import { BsSearch} from "react-icons/bs";
 
 
+
 function Nav()  {
      const [loggedIn,setLoggedIn] = useState(false);
      const history = useHistory();
