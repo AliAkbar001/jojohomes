@@ -1180,3 +1180,75 @@ input[type="submit"] {
   width: 75%;
   margin-top: 6px;
 } */
+
+.cat-card {
+  width: 27%;
+  height: 470px;
+  /* justify-content: space-between; */
+  /* background-color: #008cba; */
+  border-radius: 6px;
+  margin-left: 4.8%;
+  display: block;
+  float: left;
+  margin-top: 25px;
+  box-shadow: 2px 2px 2px 2px rgb(136, 134, 134);
+}
+.pro-card {
+  width: 27%;
+  height: 600px;
+  /* justify-content: space-between; */
+  /* background-color: #008cba; */
+  border-radius: 6px;
+  margin-left: 4.8%;
+  display: block;
+  float: left;
+  margin-top: 25px;
+  box-shadow: 2px 2px 2px 2px rgb(136, 134, 134);
+}
+.cat-card:hover {
+  box-shadow: 3px 3px 3px 3px rgb(136, 134, 134);
+}
+.img-div {
+  width: 100%;
+  height: 310px;
+  /* background-color: #088178; */
+}
+.dec-div {
+  width: 100%;
+  padding-top: 14px;
+}
+.t-center {
+  text-align: center;
+}
+.py-5 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.c-b {
+  color: black;
+}
+.view-probtn {
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: #66b0ff;
+}
+.py-5 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.pb-5 {
+  padding-bottom: 5px;
+}
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.py-15 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.py-40 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}

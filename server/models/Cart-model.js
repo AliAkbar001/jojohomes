@@ -12,8 +12,12 @@ const CartSchema = mongoose.Schema(
                     type: Number,
                     default: 1,
                 },
+                price:{
+                    type: Number,
+                },
             },
         ],
+        status: {type: String, default: 'incart'}
     },
     {timestamps: true}
 )

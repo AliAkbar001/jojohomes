@@ -34,9 +34,9 @@ const Sidebar = (props) => {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/admin/categories">
             <i className='bx bx-pie-chart-alt-2' ></i>
-            <span className="links_name">Analytics</span>
+            <span className="links_name">Categories</span>
           </a>
         </li>
         <li>

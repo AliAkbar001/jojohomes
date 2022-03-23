@@ -2,6 +2,7 @@ const router = require("express").Router()
 const {verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin} = require("./verifyToken")
 const CryptoJS = require("crypto-js")
 const Cart = require("../models/Cart-model")
+const { response } = require("express")
 
 //Add Cart
 
@@ -9,6 +10,8 @@ router.post("/", verifyToken, async(req, res) =>{
     const newCart = new Cart(req.body);
     try{
         const savedCart = await newCart.save();
+        console.log("Add to cart return value ................");
+        console.log(savedCart);
         res.status(200).json(savedCart);
     }
     catch(err){
@@ -22,6 +25,8 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
         const updatedCart = await Cart.findByIdAndUpdate(req.params.id,{
             $set: req.body
         },{ new: true });
+        console.log("updated result");
+        console.log(updatedCart);
         res.status(200).json(updatedCart);
     }
     catch(err){

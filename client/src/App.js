@@ -22,6 +22,8 @@ import AdminProducts from './admin/AdminProducts';
 import AdminLogin from './admin/AdminLogin';
 import AdminPageUsers from './admin/AdminPageUsers';
 import Navbar from './components/Nav/Navbar';
+import AdminCategories from './admin/AdminCategories';
+import CategoryProducts from './CategoryProducts';
 // import { useContext } from 'react'
 // import { BrowserRouter } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
@@ -80,6 +82,8 @@ const App = () => {
           <Route exact path='/admin/login' component={AdminLogin} />
           <Route exact path='/admin/products' component={AdminProducts} />
           <Route exact path='/admin/users' component={AdminPageUsers} />
+          <Route exact path='/admin/categories' component={AdminCategories} />
+          <Route exact path='/category/:id' component={CategoryProducts} />
           <Route exact path='/About' component={About} />
           <Route exact path='/Order_History' component={Order_History} />
           <Route exact path='/Product' component={Product} />

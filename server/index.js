@@ -8,6 +8,7 @@ const userRoute = require("./routes/user-routes")
 const productRoute = require("./routes/product-routes")
 const cartRoute = require("./routes/cart-routes")
 const orderRoute = require("./routes/order-routes")
+const categoryRoute = require("./routes/categories-routes")
 const cors = require('cors')
 
 
@@ -26,6 +27,7 @@ app.use("/api/auth",authRoute)
 app.use("/api/products",productRoute)
 app.use("/api/carts",cartRoute)
 app.use("/api/orders",orderRoute)
+app.use("/api/categories",categoryRoute)
 
 
 app.listen(process.env.PORT || 5000,()=>{

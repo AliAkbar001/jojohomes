@@ -39,7 +39,8 @@ const Login = () => {
             console.log(response.data.accessToken);
             console.log(response.data);
             // alert(response.accessToken);
-            localStorage.setItem('token',response.data.accessToken)
+            localStorage.setItem('token',response.data.accessToken);
+            localStorage.setItem('uid',response.data._id);
             alert("Logged in succfully");
             history.push("/");
         }).catch((error) => {
