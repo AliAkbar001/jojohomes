@@ -2,13 +2,15 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import  "slick-carousel/slick/slick-theme.css";
-import image1 from '../images/pillow.jpeg';
-import image2 from '../images/pillow4.jpeg';
-import image3 from '../images/h3.jpeg';
+// import image1 from '../images/pillow.jpeg';
+// import image2 from '../images/pillow4.jpeg';
+// import image3 from '../images/h3.jpeg';
 import './css/Sliderimage.scss';
 
  function SliderImage() {
-
+    const image1="";
+    const image2="";
+    const image3="";
     let settings ={
         dot:'true',
         infinite: 'true',

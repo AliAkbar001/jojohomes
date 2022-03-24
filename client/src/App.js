@@ -24,6 +24,7 @@ import AdminPageUsers from './admin/AdminPageUsers';
 import Navbar from './components/Nav/Navbar';
 import AdminCategories from './admin/AdminCategories';
 import CategoryProducts from './CategoryProducts';
+import CartPage from './components/CartPage';
 // import { useContext } from 'react'
 // import { BrowserRouter } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
@@ -88,13 +89,13 @@ const App = () => {
           <Route exact path='/Order_History' component={Order_History} />
           <Route exact path='/Product' component={Product} />
           <Route exact path='/Dashboard' component={Dashboard} />
-          <Route exact path='/Cart' component={Cart} />
+          <Route exact path='/Cart' component={CartPage} />
           <Route exact path='/Pillow_Covers' component={Pillow_Covers} />
           <Route exact path='/Sofa_Covers' component={Sofa_Covers} />
           <Route exact path='/Sofa_Covers' component={Matress_Protectors} />
           <Route exact path='/Header' component={Header} />
-          <Route path="/Login" component={Login} ></Route>
-          <Route path="/Sign_Up" component={Sign_Up}/>
+          <Route exact path="/login" component={Login} ></Route>
+          <Route exact path="/signup" component={Sign_Up}/>
           <Router>
             <Route exact path='/Bed_Sheets' >
               <PagesR productitems={productitems}

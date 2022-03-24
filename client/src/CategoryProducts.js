@@ -71,7 +71,7 @@ const CategoryProducts = () => {
                         <h5 className='t-center pb-3'>Size : {element.size}</h5>
                         <h5 className='t-center pb-3'>Price : {element.price}</h5>
                         <Link className='view-probtn' to="/" style={{marginLeft: '33.5%'}} >View Products</Link>
-                        <button className='view-probtn mt-3' onClick={() => addToCart(element)} style={{marginLeft: '33.5%',border: 'none', backgroundColor: 'gray'}} >Add to Cart</button>
+                        <button className='view-probtn mt-3' onClick={() => addToCart(element)} style={{marginLeft: '36.5%',border: 'none'}} >Add to Cart</button>
                     </div>
                 </div>
             </>

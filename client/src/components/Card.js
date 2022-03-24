@@ -1,7 +1,4 @@
 import React from 'react'
-import image1 from '../images/pillow.jpeg';
-import image2 from '../images/pillow4.jpeg';
-import image3 from '../images/h3.jpeg';
 import { Link } from 'react-router-dom';
 
 export const Card = (props) => {
@@ -11,7 +8,7 @@ export const Card = (props) => {
         <>
             <div className='cat-card'>
                 <div className='img-div'>
-                    <img src={img} alt="first" width="100%" height="310px" />
+                    <img src={"./uploads/categories/"+img} alt="first" width="100%" height="310px" />
                 </div>
                 <div className='dec-div'>
                     <h1 className='t-center'>{title}</h1>

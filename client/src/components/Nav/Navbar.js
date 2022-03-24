@@ -1,17 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./navbar.css";
 import { BsHeart, BsCart3, BsPersonCircle} from "react-icons/bs";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaYoutubeSquare,
-} from "react-icons/fa";
+import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
+import axios from "axios";
+import { FaFacebookSquare, FaInstagramSquare, FaYoutubeSquare } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { MdSwitchAccount } from "react-icons/md";
+import { HiMenuAlt3 } from "react-icons/hi";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
+const baseURL = "http://localhost:5000/api/categories";
+
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
+  const [display, setDisplay] = useState('none');
+  const [categories,setCategories] = useState();
+  
+  const auth = localStorage.getItem("token");
+
+  const history = useHistory();
+
+    useEffect(()=>{
+        axios.get(baseURL).then((response)=>{
+            console.log(response.data);
+            setCategories(response.data);
+        }).catch((error)=>{
+            console.log(error);
+        })
+    },[])
+
+    const logout = () => {
+      localStorage.clear();
+      history.push('/login');
+    }
+
+
   return (
     <>
       <nav className="main-nav">
@@ -29,28 +53,41 @@ const Navbar = () => {
             showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
           }>
           <ul>
-            <li>
+            {/* <li>
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
               <NavLink to="/dashboard">Dashboard</NavLink>
-            </li>
+            </li> */}
             <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink to="/categories">Categories</NavLink>
-            </li>
-            <li>
-              <NavLink to="/signup">Sign Up</NavLink>
-            </li>
-            <li>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/dashboard"><BsPersonCircle size='1.30cm' color='lightgrey' /></NavLink>
             </li>
             <li>
               <NavLink to="/cart">
-              Cart
-              {/* <BsHeart size='1.30cm' color='grey' /> */}
+                {/* <MdSwitchAccount size='1.30cm' color='grey' /> */}
+                <BsCart3 size='1.30cm' color='lightgrey' />
+              </NavLink>
+            </li>
+            {
+              auth?(
+                <li>
+                  <NavLink to="" onClick={logout}><BiLogOutCircle size='1.30cm' color='lightgrey' /></NavLink>
+                </li>
+              ):(
+                <>
+                  <li>
+                    <NavLink to="/signup"><MdSwitchAccount size='1.30cm' color='lightgrey' /></NavLink>
+                  </li>
+                  <li>
+                    <NavLink to="/login"><BiLogInCircle size='1.30cm' color='lightgrey' /></NavLink>
+                  </li>
+                </>
+              )
+            }
+            
+            <li>
+              <NavLink to="" onClick={() => setDisplay('block')} >
+                  <GiHamburgerMenu color="lightgray" size='1.30cm'  />
               </NavLink>
             </li>
             {/* <li>
@@ -89,11 +126,11 @@ const Navbar = () => {
           </ul> */}
 
           {/* hamburget menu start  */}
-          <div className="hamburger-menu">
+          {/* <div className="hamburger-menu">
             <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
               <GiHamburgerMenu />
             </a>
-          </div>
+          </div> */}
         </div>
       </nav>
 
@@ -102,6 +139,18 @@ const Navbar = () => {
         <p>Welcome to </p>
         <h1>Thapa Technical</h1>
       </section> */}
+      <div className="side-div" style={{display: display}}>
+        <button onClick={() => setDisplay('none')} style={{outline: 'none',border: 'none',marginLeft: '43%', marginTop: '20px', backgroundColor: 'inherit'}}><HiMenuAlt3 size='1.50cm' /></button>
+        <h2 className="t-center mt-4">Categories</h2>
+        {
+          categories && categories.map((element, index) => {
+            const {_id, title} =element;
+            return (
+              <Link to={"/category/"+_id} className="cat-link" key={index} > {title}</Link>
+            )
+          })
+        }
+      </div>
     </>
   );
 };

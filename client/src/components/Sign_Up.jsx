@@ -150,7 +150,7 @@ const  Sign_Up = () => {
                         
                         Sign Up</button>
                     
-                        <Link to='/Login'> I already have an account</Link>
+                        <Link to='/login'> I already have an account</Link>
                        <p style={{padding:'8px 0px',textAlign: 'center',color:'red'}}>{error? error: ''}</p>
                        <p style={{padding:'8px 0px',textAlign: 'center',color:'green'}}>{msg? msg: ''}</p>
                     </form>

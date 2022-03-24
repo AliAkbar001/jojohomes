@@ -28,7 +28,7 @@ Link {
 
 .main-nav {
   width: 100%;
-  height: 10rem;
+  height: 100px;
   display: grid;
   grid-template-columns: 3rem 1fr 3fr 0fr 2rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -48,7 +48,7 @@ Link {
 }
 
 .menu-link ul {
-  height: 10rem;
+  height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -59,7 +59,7 @@ Link {
 }
 
 .social-media ul {
-  height: 10rem;
+  height: 100px;
   display: grid;
   /* grid-template-columns: 3fr repeat(3, 1fr); */
   align-items: center;
@@ -289,4 +289,31 @@ Link {
   .hero-section h1 {
     font-size: 3.8rem;
   }
+}
+.side-div {
+  /* width: 290px; */
+  /* height: calc(100vh - 10rem); */
+  width: 20%;
+  height: 100vh;
+  position: relative;
+  top: -100px;
+  background-color: white;
+  display: block;
+  z-index: 100011;
+  float: right;
+  box-shadow: rgb(50 50 93 / 25%) 130px 5px 100px 120px,
+    rgb(0 0 0 / 30%) 0px 30px 60px -30px;
+}
+.cat-link {
+  display: block;
+  padding: 11px 10px;
+  width: 94%;
+  background-color: #eee;
+  text-align: center;
+  margin-left: 3%;
+  margin-top: 4px;
+  color: rgb(24, 23, 23);
+}
+.cat-link:hover {
+  background-color: rgb(204, 201, 201);
 }
