@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Product from './components/Product';
 import { Route, Switch } from 'react-router-dom';
 import About from './components/About';
@@ -25,6 +25,8 @@ import Navbar from './components/Nav/Navbar';
 import AdminCategories from './admin/AdminCategories';
 import CategoryProducts from './CategoryProducts';
 import CartPage from './components/CartPage';
+import { CartContext } from './components/cart/cart_Context';
+
 // import { useContext } from 'react'
 // import { BrowserRouter } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
@@ -32,10 +34,11 @@ import CartPage from './components/CartPage';
 
 
 const App = () => {
-
+  const user_cart = JSON.parse(localStorage.getItem("user-cart")) ?? null
+  const [userCart, setUserCart] = useState(user_cart);
   const { productitems } = data;
-  
   const [cartitems, setCartItems] = useState([]);
+  
   // const { user } = useContext(UserContext);
   // const History = useHistory();
   const handleAddProduct = (product) => {
@@ -77,7 +80,7 @@ const App = () => {
       {/* <BrowserRouter> */}
 
         <Switch>
-
+        <CartContext.Provider value={{userCart, setUserCart}}>
           <Route exact path='/' component={Home} />
           <Route exact path='/admin' component={Admin} />
           <Route exact path='/admin/login' component={AdminLogin} />
@@ -96,6 +99,8 @@ const App = () => {
           <Route exact path='/Header' component={Header} />
           <Route exact path="/login" component={Login} ></Route>
           <Route exact path="/signup" component={Sign_Up}/>
+          </CartContext.Provider>
+
           <Router>
             <Route exact path='/Bed_Sheets' >
               <PagesR productitems={productitems}

@@ -24,7 +24,7 @@ return(
     <Navbar style={{float: 'left'}} />
     {/* <SliderImage /> */}
     <Slider />
-    <div className="py-40" style={{flaot: 'left', width:'100%'}}>
+    <div className="py-40" style={{float: 'left', width:'100%'}}>
         <h1 className="t-center py-10">Categories</h1>
         {
             categories && categories.map((category, index) => {
