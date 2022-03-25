@@ -3,12 +3,13 @@ import './cart.css';
 import { CartContext } from './cart_Context';
 
 const Cart = () => {
+    var totalAmount = 0;
     const {userCart, setUserCart} = useContext(CartContext);
-    const [totalAmount, setTotalAmount] = useState(0);
     
     const handleRemoveCartItem = (e) => {
         const removeIndex = userCart.findIndex( item => item._id === e._id )
         setUserCart(userCart.splice( removeIndex, 1 )) 
+        userCart.length === 0 && setUserCart(null)
         localStorage.setItem("user-cart", JSON.stringify(userCart))
     }
 
@@ -29,11 +30,14 @@ const Cart = () => {
                 cartItems = [...cartItems,{...item}]
             }
         });
-        cartItems.map(item =>
-            setTotalAmount(totalAmount + (item.price*item.order_quantity))
-        )
         localStorage.setItem("user-cart", JSON.stringify(cartItems));
         setUserCart(cartItems)
+    }
+
+    const handleCheckout = async() =>{
+        console.log(userCart)
+        setUserCart(null)
+        localStorage.setItem("user-cart", null)
     }
   return (
     <>
@@ -43,7 +47,7 @@ const Cart = () => {
                 <div className="shop">
                     {userCart !== null && userCart.map(item => 
                     <div className="box">
-                        <img src={'./images/' + item.img} alt='display-img' />
+                        <img src={"../uploads/products/" + item.img} alt='display-img' />
                         <div className="content">
                             <h3>{item.title}</h3>
                             <h4>Price: $ {item.price}</h4>
@@ -61,10 +65,10 @@ const Cart = () => {
                     <p><span>Shipping</span> <span>$15</span></p>
                     <hr />
                     <p><span>Total</span>
-                    {userCart !== null && userCart.map(item =>
-                        <span>$ {()=>setTotalAmount(totalAmount + (item.price*item.order_quantity))}</span>
-                    )}
-                    </p><a href="#"><i className="fa fa-shopping-cart"></i>Checkout</a>
+                   <span style={{display:"none"}}> {userCart !== null && userCart.map(item => totalAmount = totalAmount + (item.price*item.order_quantity))}</span>
+                    <span>$ {totalAmount}</span>
+                    </p>
+                    <a href="#" onClick={handleCheckout}><i className="fa fa-shopping-cart"></i>Checkout</a>
                 </div>
             </div>
         </div>
