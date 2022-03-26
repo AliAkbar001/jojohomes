@@ -9,6 +9,8 @@ const baseURL = "http://localhost:5000/api/carts";
 const CategoryProducts = () => {
     const {userCart, setUserCart} = useContext(CartContext);
     const [products, setProducts] = useState();
+    const [viewProduct, setViewProduct] = useState(null);
+    const [modalDisplay, setModalDisplay] = useState({display: 'none'});
     const { id } = useParams();
     const auth = localStorage.getItem('token');
 
@@ -46,42 +48,16 @@ const CategoryProducts = () => {
            return setUserCart(cartItems)
         }
     }
-
-    // const addToCart = (prod) => {
-    //     const userId = localStorage.getItem('uid');
-    //     const cate = localStorage.getItem('category');
-    //     if(cate){
-    //         alert("category found");
-    //     }
-    //     else{
-    //         alert("colud not found category");
-    //         alert(auth);
-    //         const data={
-    //             userId: userId,
-    //             products: [
-    //                 {
-    //                     productId: prod._id,
-    //                     quantity: 1,
-    //                 },
-    //             ],
-    //             status: 'incart'
-    //         };
-    //         axios.post("http://localhost:5000/api/carts",{ 
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 "token": `Bearer ${auth}`,
-    //             },
-    //         },data).then((response) => {
-    //             console.log(response);
-    //             alert('Added to Cart Successfully');
-    //             localStorage.setItem('category',response.data._id);
-    //             alert("Add to cart ID : ",response.data._id);
-    //         }).catch((error) => {
-    //             alert(error);
-    //             console.log(error);
-    //         })
-    //     }
-    // }
+   
+    const handleViewProduct = (item) => {
+        if(item === null){
+            setViewProduct(null)
+            setModalDisplay({display:'none'})
+        }else{
+            setViewProduct(item)
+            setModalDisplay({display:'block'})
+        } 
+    }
   return (
     <>
     <Navbar />
@@ -92,7 +68,6 @@ const CategoryProducts = () => {
                 <>
                  <div className='pro-card'>
                     <div className='img-div'>
-            
                         <img src={"../uploads/products/"+element.img} alt="first" width="100%" height="310px" />
                     </div>
                     <div className='dec-div'>
@@ -100,16 +75,34 @@ const CategoryProducts = () => {
                         <h5 className='t-center pb-3'>Color : {element.color}</h5>
                         <h5 className='t-center pb-3'>Size : {element.size}</h5>
                         <h5 className='t-center pb-3'>Price : {element.price}</h5>
-                        <Link className='view-probtn' to="/" style={{marginLeft: '33.5%'}} >View Products</Link>
+                        <button className='view-probtn' to="/" style={{marginLeft: '33.5%'}} onClick={()=>handleViewProduct(element)}>View Products</button>
                         <button className='view-probtn mt-3' onClick={() => handleCart(element)} style={{marginLeft: '36.5%',border: 'none'}} >Add to Cart</button>
                     </div>
                 </div>
+                {viewProduct !== null && 
+                    <div style={modalDisplay} class="modal">
+                        <div class="modal-content">
+                            <span class="close" onClick={()=>handleViewProduct(null)}>&times;</span>
+                            <div className='product-modal'>
+                                <div>
+                                    <img src={"../uploads/products/" + viewProduct.img} alt = {viewProduct.img}/>
+                                </div>
+                                <div>
+                                    <h2>{viewProduct.title}</h2>
+                                    <p>{viewProduct.desc}</p>
+                                    <h5>Color : {viewProduct.color}</h5>
+                                    <h5>Size : {viewProduct.size}</h5>
+                                    <h5>Price : {viewProduct.price}</h5>
+                                    <button className='view-probtn mt-3' onClick={() => handleCart(viewProduct)} style={{marginLeft: '36.5%',border: 'none'}} >Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                } 
             </>
             )
         })}
     </div>
-    {/* <div className="p-4" style={{height: '35px',float:'none'}}>kjkjkjj</div> */}
-    {/* <Footer /> */}
     </>
   )
 }
