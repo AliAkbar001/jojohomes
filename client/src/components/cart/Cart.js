@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { FaSketch } from 'react-icons/fa';
 import './cart.css';
 import { CartContext } from './cart_Context';
 
@@ -35,9 +36,49 @@ const Cart = () => {
     }
 
     const handleCheckout = async() =>{
-        console.log(userCart)
-        setUserCart(null)
-        localStorage.setItem("user-cart", null)
+       const uID =  localStorage.getItem("uid") ?? null;
+       const token = 'Bearer ' + localStorage.getItem("token") ?? null;
+
+       if(uID && token){
+           //Get User Address
+        const user_res = await fetch('http://localhost:5000/api/users/find_user/' + uID,{
+         headers:{
+             'Content-Type':'application/json',
+             token:token
+         }
+        })
+            const user = await user_res.json()
+            if(user.status === 200){
+                const cartItems = {
+                    userId:uID,
+                    products:[...userCart],
+                    address:user.user.address,
+                    amount:totalAmount
+                }
+                console.log('cartItems--',cartItems)
+                //Place Order
+                const res = await fetch('http://localhost:5000/api/orders',{
+                method:'POST',
+                body:JSON.stringify(cartItems),
+                headers:{
+                    'Content-Type':'application/json',
+                    token:token
+                }
+                })
+                const data = await res.json()
+                if(data.status === 200){
+                    setUserCart(null)
+                    localStorage.setItem("user-cart", null)
+                    alert('Order placed successfully')
+                }else{
+                    alert('Server Error 2')
+                }
+            }else{
+                alert('Login for checkout')
+            }
+        }else{
+            alert('Server Error')
+        }
     }
   return (
     <>

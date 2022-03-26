@@ -86,7 +86,15 @@ router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
 })
 
 
-
+router.get("/find_user/:id", async (req, res) => {
+    try{
+        const user = await User.findById(req.params.id);
+        res.status(200).json({status:200,user});
+    }
+    catch(err){
+        res.status(500).json({status:500,err});
+    }
+})
 
 
 module.exports = router

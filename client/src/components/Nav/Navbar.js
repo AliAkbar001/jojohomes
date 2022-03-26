@@ -93,9 +93,9 @@ const Navbar = () => {
             {/* <li>
               <NavLink to="/login"><BsCart3 size='1.30cm' style={{marginLeft: '15px', marginRight: '15px'}} color='grey' /></NavLink>
             </li> */}
-            {/* <li>
+            <li>
               <NavLink to="/login"><BsPersonCircle size='1.30cm' color='grey' /></NavLink>
-            </li> */}
+            </li>
           </ul>
         </div>
 

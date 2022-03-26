@@ -12,10 +12,10 @@ router.post("/", verifyToken, async(req, res) =>{
         const savedCart = await newCart.save();
         console.log("Add to cart return value ................");
         console.log(savedCart);
-        res.status(200).json(savedCart);
+        res.status(200).json({status:200,savedCart});
     }
     catch(err){
-        res.status(500).json(err);
+        res.status(500).json({status:500,err});
     }
 })
 

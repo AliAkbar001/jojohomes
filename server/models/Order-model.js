@@ -5,10 +5,10 @@ const OrderSchema = mongoose.Schema(
         userId: { type: String },
         products: [
             {
-                productId: {
+                _id: {
                     type: String,
                 },
-                quantity: {
+                order_quantity: {
                     type: Number,
                     default: 1,
                 },
