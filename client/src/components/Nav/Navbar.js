@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
-import { BsHeart, BsCart3, BsPersonCircle} from "react-icons/bs";
+import { BsClockHistory, BsCart3, BsPersonCircle} from "react-icons/bs";
 import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import axios from "axios";
 import { FaFacebookSquare, FaInstagramSquare, FaYoutubeSquare } from "react-icons/fa";
@@ -59,14 +59,15 @@ const Navbar = () => {
             <li>
               <NavLink to="/dashboard">Dashboard</NavLink>
             </li> */}
-            <li>
-              <NavLink to="/dashboard"><BsPersonCircle size='1.30cm' color='lightgrey' /></NavLink>
-            </li>
+            
             <li>
               <NavLink to="/cart">
                 {/* <MdSwitchAccount size='1.30cm' color='grey' /> */}
                 <BsCart3 size='1.30cm' color='lightgrey' />
               </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Order_History"><BsClockHistory size='1.30cm' color='lightgrey' /></NavLink>
             </li>
             {
               auth?(
