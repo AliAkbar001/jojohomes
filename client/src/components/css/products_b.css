@@ -61,3 +61,16 @@ background-color: #0a720a;
 .products1-add-button:active{
     transform: translateY(2px);
 }
+.order-list{
+    padding: 10px;
+}
+.order-content{
+    background-color: whitesmoke;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+.order-content h3{
+    color: #6d63fd;
+    font-size: 18px;
+}

@@ -19,6 +19,7 @@ import HomeRounded from '@mui/icons-material/HomeRounded';
 import Category from '@mui/icons-material/Category';
 import { Logout, PowerSettingsNew, Settings, ShoppingCart } from '@mui/icons-material';
 import { ClassNames } from '@emotion/react';
+import { Link, NavLink } from 'react-router-dom';
 ;
 const drawerWidth = 240;
 
@@ -57,16 +58,16 @@ export default function ClippedDrawer() {
             
           </List>
        
+       
         <List>
-            
             <ListItem button>
               <ListItemIcon>
              <Category/>
               </ListItemIcon>
               <ListItemText primary='Categories' />
             </ListItem>
-          
         </List>
+
         <List>
             
             <ListItem button>
@@ -77,16 +78,18 @@ export default function ClippedDrawer() {
             </ListItem>
           
         </List>
+
+        <NavLink to = "/Order_History">
         <List>
-            
             <ListItem button>
               <ListItemIcon>
              <ShoppingCart/>
               </ListItemIcon>
               <ListItemText primary='Order' />
             </ListItem>
-          
         </List>
+        </NavLink>
+
         <List>
             
             <ListItem button>
